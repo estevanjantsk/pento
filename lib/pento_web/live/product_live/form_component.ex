@@ -23,10 +23,26 @@ defmodule PentoWeb.ProductLive.FormComponent do
         <.input field={@form[:description]} type="text" label="Description" />
         <.input field={@form[:unit_price]} type="number" label="Unit price" step="any" />
         <.input field={@form[:sku]} type="number" label="Sku" />
+
+        <div phx-drop-target={@uploads.image.ref}>
+          <.label>Image</.label>
+          <.live_file_input upload={@uploads.image} />
+        </div>
+
         <:actions>
           <.button phx-disable-with="Saving...">Save Product</.button>
         </:actions>
       </.simple_form>
+
+      <%= for image <- @uploads.image.entries do %>
+        <div class="mt-4">
+          <.live_img_preview entry={image} width="60" />
+        </div>
+        <progress max="100" value={image.progress}></progress>
+        <%= for err <- upload_errors(@uploads.image, image) do %>
+          <.error><%= err %></.error>
+        <% end %>
+      <% end %>
     </div>
     """
   end
@@ -38,7 +54,13 @@ defmodule PentoWeb.ProductLive.FormComponent do
     {:ok,
      socket
      |> assign(assigns)
-     |> assign_form(changeset)}
+     |> assign_form(changeset)
+     |> allow_upload(:image,
+       accept: ~w(.jpg .jpeg .png),
+       max_entries: 1,
+       max_size: 2_000_000,
+       auto_upload: true
+     )}
   end
 
   @impl true
