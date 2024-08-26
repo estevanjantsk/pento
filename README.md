@@ -16,3 +16,6 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+ * mix phx.gen.context Survey Demographic demographics gender:string year_of_birth:integer user_id:references:users:unique
+ * mix phx.gen.context Survey Rating ratings stars:integer user_id:references:users product_id:references:products
