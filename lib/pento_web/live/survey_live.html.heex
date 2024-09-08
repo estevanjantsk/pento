@@ -7,5 +7,9 @@
   <hr />
   <br />
 <% else %>
-  <h2>Demographic form coming soon!</h2>
+  <.live_component
+    module={DemographicLive.Form}
+    id="demographic-form"
+    current_user={@current_user}
+  />
 <% end %>
