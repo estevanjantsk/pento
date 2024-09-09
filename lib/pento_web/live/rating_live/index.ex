@@ -38,14 +38,13 @@ defmodule PentoWeb.RatingLive.Index do
       <RatingLive.Show.stars rating={rating} />
     <% else %>
       <div>
-        <%!-- <.live_component
+        <.live_component
           module={RatingLive.Form}
           id={"rating-form-#{@product.id}"}
           product={@product}
           product_index={@index}
           current_user={@current_user}
-        /> --%>
-        <h3><%= @product.name %> rating form coming soon!</h3>
+        />
       </div>
     <% end %>
     """
