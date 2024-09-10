@@ -4,6 +4,6 @@ defmodule PentoWeb.Admin.DashboardLive do
   def mount(_params, _session, socket) do
     {:ok,
      socket
-     |> assign(:survey_results_compoent_id, "survey-results")}
+     |> assign(:survey_results_component_id, "survey-results")}
   end
 end
