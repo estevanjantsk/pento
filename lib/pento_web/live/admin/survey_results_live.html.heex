@@ -1,4 +1,8 @@
 <section class="ml-8">
   <h2 class="font-light text-2xl">Survey Results</h2>
-  <div id="survey-results-component"></div>
+  <div id="survey-results-component">
+    <div :for={{name, result} <- @products_with_average_ratings}>
+      <%= name %> - <%= result %> %>
+    </div>
+  </div>
 </section>
