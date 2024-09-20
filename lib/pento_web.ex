@@ -66,6 +66,12 @@ defmodule PentoWeb do
     end
   end
 
+  def chart_live do
+    quote do
+      unquote(chart_helpers())
+    end
+  end
+
   def html do
     quote do
       use Phoenix.Component
@@ -101,6 +107,14 @@ defmodule PentoWeb do
         endpoint: PentoWeb.Endpoint,
         router: PentoWeb.Router,
         statics: PentoWeb.static_paths()
+    end
+  end
+
+  defp chart_helpers do
+    quote do
+      # Import custom chart functionality
+      import PentoWeb.BarChart
+      # import PentoWeb.ScatterPlotChart
     end
   end
 
