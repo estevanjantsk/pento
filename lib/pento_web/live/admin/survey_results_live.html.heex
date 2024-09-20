@@ -5,6 +5,31 @@
       <div>
         <.form
           for={%{}}
+          as={:gender_filter}
+          phx-change="gender_filter"
+          phx-target={@myself}
+          id="gender-form"
+        >
+          <label>By gender:</label>
+          <select name="gender_filter" id="gender_filter">
+            <%= for gender <-
+              [
+                "all",
+                "female",
+                "male",
+                "other",
+                "prefer not to say"
+              ] do %>
+              <option value={gender} selected={@gender_filter == gender}>
+                <%= gender %>
+              </option>
+            <% end %>
+          </select>
+        </.form>
+      </div>
+      <div>
+        <.form
+          for={%{}}
           as={:age_group_filter}
           phx-change="age_group_filter"
           phx-target={@myself}
